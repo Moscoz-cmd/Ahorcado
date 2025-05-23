@@ -3,6 +3,36 @@
 }
 
 <div>
-    <h1>Index</h1>
-    <p>Bienvenidos al sitio web de NombreProyecto</p>
+    <h1>Juego Ahorcado</h1>
+    <h2 id="tablero">@ViewBag.tablero</h2>
+    <p>Ingrese una letra:</p>
+         <form action = '@Url.Action("arriesgoLetra", "Home")' method = "post">
+        <input type="text" name="Letra"/>
+        <input type="submit" value="Arriesgar letra"/>
+        </form>
+    <p>Arriesgo palabra:</p>
+
+    <form action = '@Url.Action("arriesgoPalabra", "Home")' method = post>
+        <input type = "text" name="arriesgo"/>
+        <input type = "submit" value = "Arriesgar palabra"/>
+    </form>
+    
+    @switch (ViewBag.Num)
+    {
+        case 1:
+            <p>Esa letra esta en la palabra</p>
+            break;
+        case 2:
+            <p>Esa letra no esta en la palabra</p>
+            break;
+        case 3:
+            <p>Ya pusiste esa letra o no ingresaste algo valido salamename</p>
+            break;
+        case 4:
+            <h1> Muy bien salamin! Adivinaste la palabra!</h1>
+            break;
+        case 5:
+            <h1>No salamin😭 Esa no era la palabra😭</h1>
+        break;
+    }
 </div>

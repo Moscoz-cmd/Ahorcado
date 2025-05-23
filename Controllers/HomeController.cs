@@ -15,6 +15,25 @@ public class HomeController : Controller
 
     public IActionResult Index()
     {
+        JuegoAhorcado.iniciarGrupo();
+        ViewBag.PalabraSecreta = JuegoAhorcado.PalabraSecreta;
+        ViewBag.tablero = JuegoAhorcado.PalabraAdivinada;
         return View();
     }
+    public IActionResult arriesgoLetra(string Letra)
+    {
+        int num = JuegoAhorcado.arriesgoLetra(Letra);
+        ViewBag.Num = num;
+
+        ViewBag.tablero = JuegoAhorcado.PalabraAdivinada;
+        return View("index");
+    }
+    public IActionResult arriesgoPalabra(string arriesgo)
+    {
+        int num = JuegoAhorcado.arriesgoPalabra(arriesgo);
+        ViewBag.Num = num;
+        ViewBag.PalabraSecreta = JuegoAhorcado.PalabraSecreta;
+        ViewBag.tablero = JuegoAhorcado.PalabraAdivinada;
+        return View("index");
+    } 
 }
